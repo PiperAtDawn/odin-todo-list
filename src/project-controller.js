@@ -17,6 +17,7 @@ const projectController = (() => {
 
   const createProject = (name) => {
     const newProject = new Project(name);
+    projects.push(newProject);
     writeToStorage();
     displayController.generateProjects();
     return newProject;

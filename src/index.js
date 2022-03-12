@@ -12,9 +12,22 @@ document.body.appendChild(header);
 document.body.appendChild(sidebar);
 document.body.appendChild(main);
 
+const makeDefaultProjects = () => {
+  projectController.createProject('Default');
+  let newTask = new Task('Some task', 'Do this task', '2022-02-22', 'high');
+  projectController.addTask(newTask);
+  newTask = new Task('Some other task', 'Maybe do this one', '2022-02-23', 'low');
+  projectController.addTask(newTask);
+  projectController.createProject('New Project');
+  projectController.setCurrentProject(1);
+  newTask = new Task('Task in other project', 'Do it if you wanna', '2022-03-03', 'medium');
+  projectController.addTask(newTask);
+  projectController.setCurrentProject(0);
+};
+
 projectController.getFromStorage();
 if (projectController.getProjects().length === 0) {
-  projectController.createProject('Default');
+  makeDefaultProjects();
 } else {
   displayController.generateProjects();
 }
