@@ -26,42 +26,34 @@ const projectController = (() => {
     currentProject = id;
   };
 
-  const getCurrentProject = () => {
-    return projects[currentProject];
-  };
+  const getCurrentProject = () => projects[currentProject];
 
-  const getCurrentIndex = () => {
-    return currentProject;
-  }
+  const getCurrentIndex = () => currentProject;
 
-  const getTaskByIndex = (index) => {
-    return projects[currentProject].tasks[index];
-  }
+  const getTaskByIndex = (index) => projects[currentProject].tasks[index];
 
   const deleteTaskByIndex = (index) => {
     projects[currentProject].deleteTask(index);
     writeToStorage();
-  }
+  };
 
   const deleteProjectById = (id) => {
     projects.splice(id, 1);
     writeToStorage();
-  }
+  };
 
   const updateTaskDescription = (index, description) => {
     projects[currentProject].tasks[index].description = description;
     writeToStorage();
-  }
+  };
 
   const addTask = (task) => {
     projects[currentProject].addTask(task);
     writeToStorage();
     displayController.generateTasks();
-  }
+  };
 
-  const getProjects = () => {
-    return projects;
-  }
+  const getProjects = () => projects;
 
   return {
     getProjects,
